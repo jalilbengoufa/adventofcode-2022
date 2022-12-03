@@ -1,6 +1,6 @@
-﻿using adventofcode_2022.Day2;
+﻿using adventofcode_2022.Day3;
 
-Day2 objExample = new Day2();
+Day3 objExample = new Day3();
 objExample.solve();
 
 
