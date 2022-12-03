@@ -8,29 +8,78 @@ namespace adventofcode_2022.Day1
 		
 		public void solve()
 		{
-            // The files used in this example are created in the topic
-            // How to: Write to a Text File. You can change the path and
-            // file name to substitute text files of your own.
-
-            // Example #1
-            // Read the file as one string.
-            string text = System.IO.File.ReadAllText(@"C:\Users\Jalil\Desktop\src\C#\adventofcode-2022\Day1\input.txt");
-
-            // Display the file contents to the console. Variable text is a string.
-            System.Console.WriteLine("Contents of WriteText.txt = {0}", text);
+   
 
             // Example #2
             // Read each line of the file into a string array. Each element
             // of the array is one line of the file.
             string[] lines = System.IO.File.ReadAllLines(@"C:\Users\Jalil\Desktop\src\C#\adventofcode-2022\Day1\input.txt");
 
-            // Display the file contents by using a foreach loop.
-            System.Console.WriteLine("Contents of WriteLines2.txt = ");
-            foreach (string line in lines)
+
+
+            try
             {
-                // Use a tab to indent each line of the file.
-                Console.WriteLine("\t" + line);
+                /*
+                 * 1
+                 */
+                int maxCaloeries = 0;
+                int currentCaloeries = 0;
+                foreach (string line in lines)
+                {
+
+
+                    if (!String.IsNullOrEmpty(line))
+                    {
+                        int calerie = Int32.Parse(line);
+                        currentCaloeries += calerie;
+
+                    }
+                    else
+                    {
+                        if(currentCaloeries> maxCaloeries)
+                        {
+                            maxCaloeries = currentCaloeries;
+                        }
+                        
+                        currentCaloeries = 0;
+
+                    }
+                }
+                Console.WriteLine("maxCaloeries:  " + maxCaloeries);
+
+                /*
+                 * 2
+                 */
+                currentCaloeries = 0;
+                var caloriesByElf = new List<int> { };
+                foreach (string line in lines)
+                {
+
+
+                    if (!String.IsNullOrEmpty(line))
+                    {
+                        int calerie = Int32.Parse(line);
+                        currentCaloeries += calerie;
+
+                    }
+                    else
+                    {
+                        caloriesByElf.Add(currentCaloeries);
+
+                        currentCaloeries = 0;
+
+                    }
+                }
+                IEnumerable<int> sortedCalories = caloriesByElf.OrderByDescending(c => c);
+
+                var sum = sortedCalories.ElementAt(0) + sortedCalories.ElementAt(1) + sortedCalories.ElementAt(2);
+                Console.WriteLine("maxCaloeries 1:  " + sum);
             }
+            catch (FormatException)
+            {
+                Console.WriteLine($"Unable to parse");
+            }
+     
 
             // Keep the console window open in debug mode.
             Console.WriteLine("Press any key to exit.");
