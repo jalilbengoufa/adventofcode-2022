@@ -1,17 +1,17 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 
-namespace adventofcode_2022.Day3
+namespace adventofcode_2022.Day4
 {
 
 
-	class Day3 : SolverInterface
+	class Day4 : SolverInterface
     {
 		
 	
         public void solvePart1()
         {
-            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\Jalil\Desktop\src\C#\adventofcode-2022\Day3\input.txt");
+            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\Jalil\Desktop\src\C#\adventofcode-2022\Day4\input.txt");
 
     
             var itemsValue = new Dictionary<string, int>();
@@ -55,7 +55,7 @@ namespace adventofcode_2022.Day3
 
         public void solvePart2()
         {
-            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\Jalil\Desktop\src\C#\adventofcode-2022\Day3\input.txt");
+            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\Jalil\Desktop\src\C#\adventofcode-2022\Day4\input.txt");
 
             /*
              * Part 2
