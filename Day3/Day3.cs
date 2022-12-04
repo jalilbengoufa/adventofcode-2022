@@ -5,15 +5,15 @@ namespace adventofcode_2022.Day3
 {
 
 
-	class Day3 : SolverInterface
+    class Day3 : SolverInterface
     {
-		
-	
+
+
         public void solvePart1()
         {
             string[] lines = System.IO.File.ReadAllLines(@"C:\Users\Jalil\Desktop\src\C#\adventofcode-2022\Day3\input.txt");
 
-    
+
             var itemsValue = new Dictionary<string, int>();
             char[] alphabetList = Enumerable.Range('a', 'z' - 'a' + 1).Select(i => (Char)i).ToArray();
             int index = 1;
@@ -87,44 +87,40 @@ namespace adventofcode_2022.Day3
                         if (elve1Letters.Contains(elve2Ltter))
                         {
 
-                            elve2.Add(elve2Ltter);
-                        }
-                    }
-                    indexElve++;
-                }
-                else if (indexElve == 2)
-                {
 
 
-                    foreach (char elve3Ltter in line)
-                    {
-                        if (elve2.Contains(elve3Ltter))
-                        {
-                            int priority;
-                            if (itemsValue.TryGetValue(elve3Ltter.ToString().ToLower(), out priority))
+                            foreach (char elve3Ltter in line)
                             {
-                                if (Char.IsUpper(elve3Ltter))
+                                if (elve2.Contains(elve3Ltter))
                                 {
-                                    priority += 26;
+                                    int priority;
+                                    if (itemsValue.TryGetValue(elve3Ltter.ToString().ToLower(), out priority))
+                                    {
+                                        if (Char.IsUpper(elve3Ltter))
+                                        {
+                                            priority += 26;
+                                        }
+                                    }
+                                    sumPriority += priority;
+                                    indexElve = 0;
+                                    elve2 = new HashSet<char>();
+                                    break;
                                 }
                             }
-                            sumPriority += priority;
-                            indexElve = 0;
-                            elve2 = new HashSet<char>();
-                            break;
                         }
-                    }
-                }
-                else if (indexElve == 0)
-                {
-                    elve1 = line;
-                    indexElve++;
-                }
+                        else if (indexElve == 0)
+                        {
+                            elve1 = line;
+                            indexElve++;
+                        }
 
+
+                    }
+                    Console.WriteLine(sumPriority);
+                    System.Console.ReadKey();
+                }
 
             }
-            Console.WriteLine(sumPriority);
-            System.Console.ReadKey();
         }
     }
 }
