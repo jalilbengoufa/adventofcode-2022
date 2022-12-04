@@ -47,8 +47,8 @@ namespace adventofcode_2022.Day3
                         break;
                     }
                 }
-
-            }
+    
+             }
             Console.WriteLine(sumPriority);
             System.Console.ReadKey();
         }
