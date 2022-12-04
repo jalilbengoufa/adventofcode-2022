@@ -17,6 +17,6 @@ using adventofcode_2022.Day4;
 //Day3.solvePart2();
 
 Day4 Day4 = new Day4();
-Day4.solvePart1();
-//Day4.solvePart2();
+//Day4.solvePart1();
+Day4.solvePart2();
 

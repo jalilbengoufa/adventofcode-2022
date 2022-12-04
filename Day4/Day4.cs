@@ -13,43 +13,34 @@ namespace adventofcode_2022.Day4
         {
             string[] lines = System.IO.File.ReadAllLines(@"C:\Users\Jalil\Desktop\src\C#\adventofcode-2022\Day4\input.txt");
 
-    
-            var itemsValue = new Dictionary<string, int>();
-            char[] alphabetList = Enumerable.Range('a', 'z' - 'a' + 1).Select(i => (Char)i).ToArray();
-            int index = 1;
-            foreach (var letter in alphabetList)
-            {
-                itemsValue.Add(letter.ToString(), index);
-                index++;
-            }
 
-            int sumPriority = 0;
+            int totalOverlap = 0;
             foreach (string line in lines)
             {
-                string firsthalf = line.Substring(0, line.Length / 2);
-                string secondhalf = line.Substring((line.Length / 2), line.Length / 2);
 
-                var firsthalfLetters = new HashSet<char>(firsthalf);
-                foreach (char secondhalfLetter in secondhalf)
+                string[] pairs = line.Split(",");
+
+                string[] pairsOfNumbers1 = pairs[0].Split("-");
+                int startNb = Int32.Parse(pairsOfNumbers1[0]);
+                int endNb = Int32.Parse(pairsOfNumbers1[1]);
+
+                string[] pairsOfNumbers2 = pairs[1].Split("-");
+                int startNb2 = Int32.Parse(pairsOfNumbers2[0]);
+                int endNb2 = Int32.Parse(pairsOfNumbers2[1]);
+
+                if(startNb - startNb2 <= 0 && endNb - endNb2 >= 0)
                 {
-                    if (firsthalfLetters.Contains(secondhalfLetter))
-                    {
-
-                        int priority;
-                        if (itemsValue.TryGetValue(secondhalfLetter.ToString().ToLower(), out priority))
-                        {
-                            if (Char.IsUpper(secondhalfLetter))
-                            {
-                                priority += 26;
-                            }
-                        }
-                        sumPriority += priority;
-                        break;
-                    }
+                    totalOverlap++;
+                }
+                else if (startNb2 - startNb <= 0 && endNb2 - endNb >= 0)
+                {
+                    totalOverlap++;
                 }
 
+
+
             }
-            Console.WriteLine(sumPriority);
+            Console.WriteLine(totalOverlap);
             System.Console.ReadKey();
         }
 
@@ -57,73 +48,61 @@ namespace adventofcode_2022.Day4
         {
             string[] lines = System.IO.File.ReadAllLines(@"C:\Users\Jalil\Desktop\src\C#\adventofcode-2022\Day4\input.txt");
 
-            /*
-             * Part 2
-             */
-            var itemsValue = new Dictionary<string, int>();
-            char[] alphabetList = Enumerable.Range('a', 'z' - 'a' + 1).Select(i => (Char)i).ToArray();
-            int index = 1;
-            foreach (var letter in alphabetList)
-            {
-                itemsValue.Add(letter.ToString(), index);
-                index++;
-            }
 
-            int sumPriority = 0;
-
-            string elve1 = "";
-            var elve2 = new HashSet<char>();
-            int indexElve = 0;
+            int totalOverlap = 0;
             foreach (string line in lines)
             {
 
+                string[] pairs = line.Split(",");
 
-                if (indexElve == 1)
+                string[] pairsOfNumbers1 = pairs[0].Split("-");
+                int startNb = Int32.Parse(pairsOfNumbers1[0]);
+                int endNb = Int32.Parse(pairsOfNumbers1[1]);
+
+                string[] pairsOfNumbers2 = pairs[1].Split("-");
+                int startNb2 = Int32.Parse(pairsOfNumbers2[0]);
+                int endNb2 = Int32.Parse(pairsOfNumbers2[1]);
+
+                /*
+                 * 
+                 * solution1
+                 */
+
+                /*   IEnumerable<int> range = Enumerable.Range(startNb, endNb - startNb + 1);
+                   IEnumerable<int> range2 = Enumerable.Range(startNb2, endNb2 - startNb2 + 1);
+
+
+                   var range2Set = new HashSet<int>(range2);
+
+                   foreach (int i in range)
+                   {
+                       if (range2Set.Contains(i))
+                       {
+                           totalOverlap++;
+                           break;
+                       }
+
+                   }*/
+
+
+                /*
+                * 
+                * solution 2
+                */
+
+                if ((startNb - startNb2 <= 0 && startNb - endNb2 >= 0)
+                    || (endNb - startNb2 >= 0 && endNb - endNb2 <= 0))
                 {
-                    var elve1Letters = new HashSet<char>(elve1);
-
-                    foreach (char elve2Ltter in line)
-                    {
-                        if (elve1Letters.Contains(elve2Ltter))
-                        {
-
-                            elve2.Add(elve2Ltter);
-                        }
-                    }
-                    indexElve++;
+                    totalOverlap++;
                 }
-                else if (indexElve == 2)
+                else if ((startNb2 - startNb <= 0 && startNb2 - endNb >= 0)
+                || (endNb2 - startNb >= 0 && endNb2 - endNb <= 0))
                 {
-
-
-                    foreach (char elve3Ltter in line)
-                    {
-                        if (elve2.Contains(elve3Ltter))
-                        {
-                            int priority;
-                            if (itemsValue.TryGetValue(elve3Ltter.ToString().ToLower(), out priority))
-                            {
-                                if (Char.IsUpper(elve3Ltter))
-                                {
-                                    priority += 26;
-                                }
-                            }
-                            sumPriority += priority;
-                            indexElve = 0;
-                            elve2 = new HashSet<char>();
-                            break;
-                        }
-                    }
+                    totalOverlap++;
                 }
-                else if (indexElve == 0)
-                {
-                    elve1 = line;
-                    indexElve++;
-                }
-
 
             }
-            Console.WriteLine(sumPriority);
+            Console.WriteLine(totalOverlap);
             System.Console.ReadKey();
         }
     }
