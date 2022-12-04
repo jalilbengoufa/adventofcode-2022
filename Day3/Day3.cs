@@ -47,8 +47,8 @@ namespace adventofcode_2022.Day3
                         break;
                     }
                 }
-
-            }
+    
+             }
             Console.WriteLine(sumPriority);
             System.Console.ReadKey();
         }
@@ -87,13 +87,6 @@ namespace adventofcode_2022.Day3
                         if (elve1Letters.Contains(elve2Ltter))
                         {
 
-                            elve2.Add(elve2Ltter);
-                        }
-                    }
-                    indexElve++;
-                }
-                else if (indexElve == 2)
-                {
 
 
                     foreach (char elve3Ltter in line)
@@ -126,5 +119,6 @@ namespace adventofcode_2022.Day3
             Console.WriteLine(sumPriority);
             System.Console.ReadKey();
         }
-    }
+
+	}
 }
