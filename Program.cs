@@ -22,6 +22,6 @@ using adventofcode_2022.Day5;
 //Day4.solvePart2();
 
 Day5 Day5 = new Day5();
-Day5.solvePart1();
-//Day4.solvePart2();
+//Day5.solvePart1();
+Day5.solvePart2();
 
