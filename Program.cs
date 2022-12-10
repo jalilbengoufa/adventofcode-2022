@@ -4,6 +4,7 @@ using adventofcode_2022.Day3;
 using adventofcode_2022.Day4;
 using adventofcode_2022.Day5;
 using adventofcode_2022.Day6;
+using adventofcode_2022.Day7;
 
 //Day1 Day1 = new Day1();
 //Day1.solvePart1();
@@ -26,8 +27,12 @@ using adventofcode_2022.Day6;
 //Day5.solvePart1();
 //Day5.solvePart2();
 
-Day6 Day6 = new Day6();
+//Day6 Day6 = new Day6();
 //Day6.solvePart1();
-Day6.solvePart2();
+//Day6.solvePart2();
+
+Day7 Day7 = new Day7();
+Day7.solvePart1();
+//Day7.solvePart2();
 
 
