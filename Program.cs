@@ -37,7 +37,7 @@ using adventofcode_2022.Day8;
 //Day7.solvePart2();
 
 Day8 Day8 = new Day8();
-Day8.solvePart1();
-//Day8.solvePart2();
+//Day8.solvePart1();
+Day8.solvePart2();
 
 
