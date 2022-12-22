@@ -1,18 +1,18 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 
-namespace adventofcode_2022.Day8
+namespace adventofcode_2022.Day9
 {
 
 
-	class Day8 : SolverInterface
+	class Day9 : SolverInterface
     {
 		
 	
         public void solvePart1()
         {
 
-            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\Jalil\Desktop\src\C#\adventofcode-2022\Day8\input.txt");
+            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\Jalil\Desktop\src\C#\adventofcode-2022\Day9\input.txt");
 
 
             int[][] jaggedArray = new int[lines.Length][];
@@ -34,7 +34,7 @@ namespace adventofcode_2022.Day8
 
         public void solvePart2()
         {
-            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\Jalil\Desktop\src\C#\adventofcode-2022\Day8\input.txt");
+            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\Jalil\Desktop\src\C#\adventofcode-2022\Day9\input.txt");
 
 
             int[][] jaggedArray = new int[lines.Length][];
